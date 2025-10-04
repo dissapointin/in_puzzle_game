@@ -6,7 +6,6 @@ var side_membership: Dictionary = {}
 var previous_position: Vector3
 var cube_parent: Cube
 
-
 func _ready():
 	print("ready " + str(self))
 
