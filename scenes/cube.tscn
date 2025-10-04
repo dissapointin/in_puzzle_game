@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://sx6rqwpcr2kr"]
+
+[ext_resource type="Script" uid="uid://bi47c8ononqbm" path="res://scripts/classes/cube.gd" id="1_jbd7x"]
+[ext_resource type="PackedScene" uid="uid://bwb6s15jgir3t" path="res://scenes/side.tscn" id="2_wd2d1"]
+
+[node name="Cube" type="Node3D"]
+script = ExtResource("1_jbd7x")
+
+[node name="Side" parent="." instance=ExtResource("2_wd2d1")]
