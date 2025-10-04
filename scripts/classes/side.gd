@@ -5,7 +5,6 @@ extends Node3D
 # side directions
 enum SIDE { TOP, BOTTOM, LEFT, RIGHT, FRONT, BACK }
 
-
 var side: SIDE
 var middle: Vector3 = Vector3.ZERO
 var cube_parent: Cube

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dy8pg21w3410p" path="res://scripts/test_script.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://bi47c8ononqbm" path="res://scripts/classes/cube.gd" id="2_lbhrr"]
-[ext_resource type="Script" uid="uid://8ap16csdw44s" path="res://scripts/classes/side.gd" id="3_iywne"]
+[ext_resource type="Script" uid="uid://c3etm5m287ndt" path="res://subcube.gd" id="3_lnu2h"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mwb40"]
 
@@ -15,17 +15,14 @@ material = SubResource("ORMMaterial3D_80nbo")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_feb5d"]
 albedo_color = Color(1, 0, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fc0e3"]
-albedo_color = Color(0.70915294, 0.8939478, 0.57854575, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7jktm"]
-albedo_color = Color(1, 0, 1, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ryrav"]
 albedo_color = Color(1, 1, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eow3j"]
 albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7jktm"]
+albedo_color = Color(1, 0, 1, 1)
 
 [sub_resource type="Shader" id="Shader_feb5d"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.5.stable's StandardMaterial3D.
@@ -86,6 +83,9 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fc0e3"]
+albedo_color = Color(0.70915294, 0.8939478, 0.57854575, 1)
+
 [node name="Game" type="Node3D"]
 script = ExtResource("1_lnu2h")
 
@@ -102,176 +102,178 @@ transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 2, 6)
 script = ExtResource("2_lbhrr")
 metadata/_custom_type_script = "uid://bi47c8ononqbm"
 
-[node name="Side_FRONT" type="Node3D" parent="Cube"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, 1)
-script = ExtResource("3_iywne")
-metadata/_custom_type_script = "uid://8ap16csdw44s"
+[node name="Subcube4" type="Node3D" parent="Cube"]
+script = ExtResource("3_lnu2h")
+metadata/_custom_type_script = "uid://c3etm5m287ndt"
 
-[node name="Subside" type="MeshInstance3D" parent="Cube/Side_FRONT"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, -0.5, 0, 0.5)
+[node name="Subcube" type="MeshInstance3D" parent="Cube/Subcube4"]
+transform = Transform3D(1, 0, 0, 0, -4.3711372e-09, -1, 0, 0.099999964, -4.371139e-08, -0.5, 0.5, 1)
 mesh = SubResource("BoxMesh_e2o6t")
 skeleton = NodePath("../../../RigidBody3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_feb5d")
 
-[node name="Subside2" type="MeshInstance3D" parent="Cube/Side_FRONT"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 0.5, 0, 0.5)
+[node name="Subcube2" type="MeshInstance3D" parent="Cube/Subcube4"]
+transform = Transform3D(-4.371139e-08, 0.099999964, -4.371139e-08, 0, -4.3711372e-09, -1, -1, -4.3711372e-09, 1.9106855e-15, -1, 0.5, 0.5)
+mesh = SubResource("BoxMesh_e2o6t")
+skeleton = NodePath("../../../RigidBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_ryrav")
+
+[node name="Subcube3" type="MeshInstance3D" parent="Cube/Subcube4"]
+transform = Transform3D(1.9106857e-15, -8.7422745e-09, -1, 4.371139e-08, -0.099999964, 8.742278e-08, -1, -4.3711372e-09, 1.9106855e-15, -0.5, 2.1855694e-08, 0.5)
+mesh = SubResource("BoxMesh_e2o6t")
+skeleton = NodePath("../../../RigidBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_eow3j")
+
+[node name="Subcube3" type="Node3D" parent="Cube"]
+script = ExtResource("3_lnu2h")
+metadata/_custom_type_script = "uid://c3etm5m287ndt"
+
+[node name="Subcube" type="MeshInstance3D" parent="Cube/Subcube3"]
+transform = Transform3D(1, 0, 0, 0, -4.3711372e-09, -1, 0, 0.099999964, -4.371139e-08, 0.5, 0.5, 1)
 mesh = SubResource("BoxMesh_e2o6t")
 skeleton = NodePath("../../../RigidBody3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_feb5d")
 
-[node name="Subside3" type="MeshInstance3D" parent="Cube/Side_FRONT"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 0.5, 0, -0.5)
+[node name="Subcube2" type="MeshInstance3D" parent="Cube/Subcube3"]
+transform = Transform3D(-4.371139e-08, 0.099999964, -4.371139e-08, 0, -4.3711372e-09, -1, -1, -4.3711372e-09, 1.9106855e-15, 1, 0.5, 0.5)
+mesh = SubResource("BoxMesh_e2o6t")
+skeleton = NodePath("../../../RigidBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_7jktm")
+
+[node name="Subcube3" type="MeshInstance3D" parent="Cube/Subcube3"]
+transform = Transform3D(1.9106857e-15, -8.7422745e-09, -1, 4.371139e-08, -0.099999964, 8.742278e-08, -1, -4.3711372e-09, 1.9106855e-15, 0.5, -6.556708e-08, 0.5)
+mesh = SubResource("BoxMesh_e2o6t")
+skeleton = NodePath("../../../RigidBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_eow3j")
+
+[node name="Subcube2" type="Node3D" parent="Cube"]
+script = ExtResource("3_lnu2h")
+metadata/_custom_type_script = "uid://c3etm5m287ndt"
+
+[node name="Subcube" type="MeshInstance3D" parent="Cube/Subcube2"]
+transform = Transform3D(1, 0, 0, 0, -4.3711372e-09, -1, 0, 0.099999964, -4.371139e-08, 0.5, 1.5, 1)
 mesh = SubResource("BoxMesh_e2o6t")
 skeleton = NodePath("../../../RigidBody3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_feb5d")
 
-[node name="Subside4" type="MeshInstance3D" parent="Cube/Side_FRONT"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, -0.5, 0, -0.5)
+[node name="Subcube2" type="MeshInstance3D" parent="Cube/Subcube2"]
+transform = Transform3D(-4.371139e-08, 0.099999964, -4.371139e-08, 0, -4.3711372e-09, -1, -1, -4.3711372e-09, 1.9106855e-15, 1, 1.5, 0.5)
+mesh = SubResource("BoxMesh_e2o6t")
+skeleton = NodePath("../../../RigidBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_7jktm")
+
+[node name="Subcube3" type="MeshInstance3D" parent="Cube/Subcube2"]
+transform = Transform3D(1.9106857e-15, -8.7422745e-09, -1, 4.371139e-08, -0.099999964, 8.742278e-08, -1, -4.3711372e-09, 1.9106855e-15, 0.5, 1.9999999, 0.5)
+mesh = SubResource("BoxMesh_e2o6t")
+skeleton = NodePath("../../../RigidBody3D")
+surface_material_override/0 = SubResource("ShaderMaterial_fc0e3")
+
+[node name="Subcube" type="Node3D" parent="Cube"]
+script = ExtResource("3_lnu2h")
+metadata/_custom_type_script = "uid://c3etm5m287ndt"
+
+[node name="Subcube" type="MeshInstance3D" parent="Cube/Subcube"]
+transform = Transform3D(1, 0, 0, 0, -4.3711372e-09, -1, 0, 0.099999964, -4.371139e-08, -0.5, 1.5, 1)
 mesh = SubResource("BoxMesh_e2o6t")
 skeleton = NodePath("../../../RigidBody3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_feb5d")
 
-[node name="Side_BACK" type="Node3D" parent="Cube"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, -1)
-script = ExtResource("3_iywne")
-metadata/_custom_type_script = "uid://8ap16csdw44s"
-
-[node name="Subside" type="MeshInstance3D" parent="Cube/Side_BACK"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, -0.5, 0, 0.5)
-mesh = SubResource("BoxMesh_e2o6t")
-skeleton = NodePath("../../../RigidBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_fc0e3")
-
-[node name="Subside2" type="MeshInstance3D" parent="Cube/Side_BACK"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 0.5, 0, 0.5)
-mesh = SubResource("BoxMesh_e2o6t")
-skeleton = NodePath("../../../RigidBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_fc0e3")
-
-[node name="Subside3" type="MeshInstance3D" parent="Cube/Side_BACK"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 0.5, 0, -0.5)
-mesh = SubResource("BoxMesh_e2o6t")
-skeleton = NodePath("../../../RigidBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_fc0e3")
-
-[node name="Subside4" type="MeshInstance3D" parent="Cube/Side_BACK"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, -0.5, 0, -0.5)
-mesh = SubResource("BoxMesh_e2o6t")
-skeleton = NodePath("../../../RigidBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_fc0e3")
-
-[node name="Side_RIGHT" type="Node3D" parent="Cube"]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 1, 1, 0)
-script = ExtResource("3_iywne")
-metadata/_custom_type_script = "uid://8ap16csdw44s"
-
-[node name="Subside" type="MeshInstance3D" parent="Cube/Side_RIGHT"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, -0.5, 0, 0.5)
-mesh = SubResource("BoxMesh_e2o6t")
-skeleton = NodePath("../../../RigidBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_7jktm")
-
-[node name="Subside2" type="MeshInstance3D" parent="Cube/Side_RIGHT"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 0.5, 0, 0.5)
-mesh = SubResource("BoxMesh_e2o6t")
-skeleton = NodePath("../../../RigidBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_7jktm")
-
-[node name="Subside3" type="MeshInstance3D" parent="Cube/Side_RIGHT"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 0.5, 0, -0.5)
-mesh = SubResource("BoxMesh_e2o6t")
-skeleton = NodePath("../../../RigidBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_7jktm")
-
-[node name="Subside4" type="MeshInstance3D" parent="Cube/Side_RIGHT"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, -0.5, 0, -0.5)
-mesh = SubResource("BoxMesh_e2o6t")
-skeleton = NodePath("../../../RigidBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_7jktm")
-
-[node name="Side_LEFT" type="Node3D" parent="Cube"]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -1, 1, 0)
-script = ExtResource("3_iywne")
-metadata/_custom_type_script = "uid://8ap16csdw44s"
-
-[node name="Subside" type="MeshInstance3D" parent="Cube/Side_LEFT"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, -0.5, 0, 0.5)
+[node name="Subcube2" type="MeshInstance3D" parent="Cube/Subcube"]
+transform = Transform3D(-4.371139e-08, 0.099999964, -4.371139e-08, 0, -4.3711372e-09, -1, -1, -4.3711372e-09, 1.9106855e-15, -0.99999994, 1.5, 0.5)
 mesh = SubResource("BoxMesh_e2o6t")
 skeleton = NodePath("../../../RigidBody3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_ryrav")
 
-[node name="Subside2" type="MeshInstance3D" parent="Cube/Side_LEFT"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 0.5, 0, 0.5)
+[node name="Subcube3" type="MeshInstance3D" parent="Cube/Subcube"]
+transform = Transform3D(1.9106857e-15, -8.7422745e-09, -1, 4.371139e-08, -0.099999964, 8.742278e-08, -1, -4.3711372e-09, 1.9106855e-15, -0.5, 2, 0.5)
+mesh = SubResource("BoxMesh_e2o6t")
+skeleton = NodePath("../../../RigidBody3D")
+surface_material_override/0 = SubResource("ShaderMaterial_fc0e3")
+
+[node name="Subcube6" type="Node3D" parent="Cube"]
+script = ExtResource("3_lnu2h")
+metadata/_custom_type_script = "uid://c3etm5m287ndt"
+
+[node name="Subcube" type="MeshInstance3D" parent="Cube/Subcube6"]
+transform = Transform3D(1, 0, 0, 0, -4.3711372e-09, -1, 0, 0.099999964, -4.371139e-08, 0.5, 1.5, -1)
+mesh = SubResource("BoxMesh_e2o6t")
+skeleton = NodePath("../../../RigidBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_fc0e3")
+
+[node name="Subcube2" type="MeshInstance3D" parent="Cube/Subcube6"]
+transform = Transform3D(-4.371139e-08, 0.099999964, -4.371139e-08, 0, -4.3711372e-09, -1, -1, -4.3711372e-09, 1.9106855e-15, 1, 1.5, -0.5)
+mesh = SubResource("BoxMesh_e2o6t")
+skeleton = NodePath("../../../RigidBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_7jktm")
+
+[node name="Subcube3" type="MeshInstance3D" parent="Cube/Subcube6"]
+transform = Transform3D(1.9106857e-15, -8.7422745e-09, -1, 4.371139e-08, -0.099999964, 8.742278e-08, -1, -4.3711372e-09, 1.9106855e-15, 0.5, 2, -0.5)
+mesh = SubResource("BoxMesh_e2o6t")
+skeleton = NodePath("../../../RigidBody3D")
+surface_material_override/0 = SubResource("ShaderMaterial_fc0e3")
+
+[node name="Subcube8" type="Node3D" parent="Cube"]
+script = ExtResource("3_lnu2h")
+metadata/_custom_type_script = "uid://c3etm5m287ndt"
+
+[node name="Subcube" type="MeshInstance3D" parent="Cube/Subcube8"]
+transform = Transform3D(1, 0, 0, 0, -4.3711372e-09, -1, 0, 0.099999964, -4.371139e-08, 0.5, 0.5, -1)
+mesh = SubResource("BoxMesh_e2o6t")
+skeleton = NodePath("../../../RigidBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_fc0e3")
+
+[node name="Subcube2" type="MeshInstance3D" parent="Cube/Subcube8"]
+transform = Transform3D(-4.371139e-08, 0.099999964, -4.371139e-08, 0, -4.3711372e-09, -1, -1, -4.3711372e-09, 1.9106855e-15, 0.99999994, 0.5, -0.5)
+mesh = SubResource("BoxMesh_e2o6t")
+skeleton = NodePath("../../../RigidBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_7jktm")
+
+[node name="Subcube3" type="MeshInstance3D" parent="Cube/Subcube8"]
+transform = Transform3D(1.9106857e-15, -8.7422745e-09, -1, 4.371139e-08, -0.099999964, 8.742278e-08, -1, -4.3711372e-09, 1.9106855e-15, 0.5, -2.1855694e-08, -0.5)
+mesh = SubResource("BoxMesh_e2o6t")
+skeleton = NodePath("../../../RigidBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_eow3j")
+
+[node name="Subcube5" type="Node3D" parent="Cube"]
+script = ExtResource("3_lnu2h")
+metadata/_custom_type_script = "uid://c3etm5m287ndt"
+
+[node name="Subcube" type="MeshInstance3D" parent="Cube/Subcube5"]
+transform = Transform3D(1, 0, 0, 0, -4.3711372e-09, -1, 0, 0.099999964, -4.371139e-08, -0.5, 1.5, -1)
+mesh = SubResource("BoxMesh_e2o6t")
+skeleton = NodePath("../../../RigidBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_fc0e3")
+
+[node name="Subcube2" type="MeshInstance3D" parent="Cube/Subcube5"]
+transform = Transform3D(-4.371139e-08, 0.099999964, -4.371139e-08, 0, -4.3711372e-09, -1, -1, -4.3711372e-09, 1.9106855e-15, -1, 1.5, -0.5)
 mesh = SubResource("BoxMesh_e2o6t")
 skeleton = NodePath("../../../RigidBody3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_ryrav")
 
-[node name="Subside3" type="MeshInstance3D" parent="Cube/Side_LEFT"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 0.5, 0, -0.5)
+[node name="Subcube3" type="MeshInstance3D" parent="Cube/Subcube5"]
+transform = Transform3D(1.9106857e-15, -8.7422745e-09, -1, 4.371139e-08, -0.099999964, 8.742278e-08, -1, -4.3711372e-09, 1.9106855e-15, -0.5, 2, -0.5)
+mesh = SubResource("BoxMesh_e2o6t")
+skeleton = NodePath("../../../RigidBody3D")
+surface_material_override/0 = SubResource("ShaderMaterial_fc0e3")
+
+[node name="Subcube7" type="Node3D" parent="Cube"]
+script = ExtResource("3_lnu2h")
+metadata/_custom_type_script = "uid://c3etm5m287ndt"
+
+[node name="Subcube" type="MeshInstance3D" parent="Cube/Subcube7"]
+transform = Transform3D(1, 0, 0, 0, -4.3711372e-09, -1, 0, 0.099999964, -4.371139e-08, -0.5, 0.5, -1)
+mesh = SubResource("BoxMesh_e2o6t")
+skeleton = NodePath("../../../RigidBody3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_fc0e3")
+
+[node name="Subcube2" type="MeshInstance3D" parent="Cube/Subcube7"]
+transform = Transform3D(-4.371139e-08, 0.099999964, -4.371139e-08, 0, -4.3711372e-09, -1, -1, -4.3711372e-09, 1.9106855e-15, -1, 0.5, -0.5)
 mesh = SubResource("BoxMesh_e2o6t")
 skeleton = NodePath("../../../RigidBody3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_ryrav")
 
-[node name="Subside4" type="MeshInstance3D" parent="Cube/Side_LEFT"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, -0.5, 0, -0.5)
-mesh = SubResource("BoxMesh_e2o6t")
-skeleton = NodePath("../../../RigidBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_ryrav")
-
-[node name="Side_BOTTOM" type="Node3D" parent="Cube"]
-transform = Transform3D(1.9106857e-15, -8.742278e-08, -1, 4.371139e-08, -1, 8.742278e-08, -1, -4.371139e-08, 1.9106855e-15, 0, 0, 0)
-script = ExtResource("3_iywne")
-metadata/_custom_type_script = "uid://8ap16csdw44s"
-
-[node name="Subside" type="MeshInstance3D" parent="Cube/Side_BOTTOM"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, -0.5, 0, 0.5)
+[node name="Subcube3" type="MeshInstance3D" parent="Cube/Subcube7"]
+transform = Transform3D(1.9106857e-15, -8.7422745e-09, -1, 4.371139e-08, -0.099999964, 8.742278e-08, -1, -4.3711372e-09, 1.9106855e-15, -0.5, 6.556708e-08, -0.5)
 mesh = SubResource("BoxMesh_e2o6t")
 skeleton = NodePath("../../../RigidBody3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_eow3j")
-
-[node name="Subside2" type="MeshInstance3D" parent="Cube/Side_BOTTOM"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 0.5, 0, 0.5)
-mesh = SubResource("BoxMesh_e2o6t")
-skeleton = NodePath("../../../RigidBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_eow3j")
-
-[node name="Subside3" type="MeshInstance3D" parent="Cube/Side_BOTTOM"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 0.5, 0, -0.5)
-mesh = SubResource("BoxMesh_e2o6t")
-skeleton = NodePath("../../../RigidBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_eow3j")
-
-[node name="Subside4" type="MeshInstance3D" parent="Cube/Side_BOTTOM"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, -0.5, 0, -0.5)
-mesh = SubResource("BoxMesh_e2o6t")
-skeleton = NodePath("../../../RigidBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_eow3j")
-
-[node name="Side_TOP" type="Node3D" parent="Cube"]
-transform = Transform3D(1.9106857e-15, -8.742278e-08, -1, 4.371139e-08, -1, 8.742278e-08, -1, -4.371139e-08, 1.9106855e-15, 0, 2, 0)
-script = ExtResource("3_iywne")
-metadata/_custom_type_script = "uid://8ap16csdw44s"
-
-[node name="Subside" type="MeshInstance3D" parent="Cube/Side_TOP"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, -0.5, 0, 0.5)
-mesh = SubResource("BoxMesh_e2o6t")
-skeleton = NodePath("../../../RigidBody3D")
-surface_material_override/0 = SubResource("ShaderMaterial_fc0e3")
-
-[node name="Subside2" type="MeshInstance3D" parent="Cube/Side_TOP"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 0.5, 0, 0.5)
-mesh = SubResource("BoxMesh_e2o6t")
-skeleton = NodePath("../../../RigidBody3D")
-surface_material_override/0 = SubResource("ShaderMaterial_fc0e3")
-
-[node name="Subside3" type="MeshInstance3D" parent="Cube/Side_TOP"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, 0.5, 0, -0.5)
-mesh = SubResource("BoxMesh_e2o6t")
-skeleton = NodePath("../../../RigidBody3D")
-surface_material_override/0 = SubResource("ShaderMaterial_fc0e3")
-
-[node name="Subside4" type="MeshInstance3D" parent="Cube/Side_TOP"]
-transform = Transform3D(1, 0, 0, 0, 0.099999964, 0, 0, 0, 1, -0.5, 0, -0.5)
-mesh = SubResource("BoxMesh_e2o6t")
-skeleton = NodePath("../../../RigidBody3D")
-surface_material_override/0 = SubResource("ShaderMaterial_fc0e3")

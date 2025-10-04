@@ -6,6 +6,9 @@ func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
 
 func _ready() -> void:
+	cube.set_subcube(cube.get_node("Subcube"),[Side.SIDE.BOTTOM,Side.SIDE.TOP,Side.SIDE.LEFT])
+	
+	"""
 	cube.set_side(cube.get_node("Side_TOP"), Side.SIDE.TOP)
 	cube.set_side(cube.get_node("Side_BOTTOM"), Side.SIDE.BOTTOM)
 	cube.set_side(cube.get_node("Side_FRONT"), Side.SIDE.FRONT)
@@ -30,4 +33,4 @@ func _ready() -> void:
 	cube.rotate_cube(Side.SIDE.LEFT)
 	await wait(2)
 	print("rig")
-	cube.rotate_cube(Side.SIDE.RIGHT)
+	cube.rotate_cube(Side.SIDE.RIGHT)"""
