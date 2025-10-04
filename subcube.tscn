@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=4 uid="uid://dutx0ex6by78x"]
+[gd_scene load_steps=13 format=4 uid="uid://dutx0ex6by78x"]
 
 [ext_resource type="ArrayMesh" uid="uid://djnoqfh6d84v1" path="res://kostka_clean.obj" id="1_bamm3"]
+[ext_resource type="PackedScene" uid="uid://b0l648lmwhxfj" path="res://player.tscn" id="2_rxkea"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_rxkea"]
 _surfaces = [{
@@ -44,37 +45,40 @@ points = PackedVector3Array(1.0158731, -0.9841332, 0.79365075, -0.79365075, -1.0
 
 [node name="Node3D" type="Node3D"]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="staticBodySubcube" type="StaticBody3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="staticBodySubcube"]
 mesh = ExtResource("1_bamm3")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/MeshInstance3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="staticBodySubcube/MeshInstance3D"]
 mesh = SubResource("ArrayMesh_rxkea")
 
-[node name="CollisionShape3D11" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="staticBodySubcube"]
 shape = SubResource("ConvexPolygonShape3D_tq4bx")
 
-[node name="CollisionShape3D10" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="staticBodySubcube"]
 shape = SubResource("ConvexPolygonShape3D_tnkwc")
 
-[node name="CollisionShape3D9" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="staticBodySubcube"]
 shape = SubResource("ConvexPolygonShape3D_jkh3t")
 
-[node name="CollisionShape3D8" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="staticBodySubcube"]
 shape = SubResource("ConvexPolygonShape3D_1y7ro")
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="staticBodySubcube"]
 shape = SubResource("ConvexPolygonShape3D_krp60")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="staticBodySubcube"]
 shape = SubResource("ConvexPolygonShape3D_uenm2")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="staticBodySubcube"]
 shape = SubResource("ConvexPolygonShape3D_rvv6o")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="staticBodySubcube"]
 shape = SubResource("ConvexPolygonShape3D_2lxbn")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="staticBodySubcube"]
 shape = SubResource("ConvexPolygonShape3D_2vxa5")
+
+[node name="player" parent="." instance=ExtResource("2_rxkea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
