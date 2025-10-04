@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://djnoqfh6d84v1"
+path="res://.godot/imported/kostka_clean.obj-5b6bb1c3c6582f6f38a484b331e08786.mesh"
+
+[deps]
+
+files=["res://.godot/imported/kostka_clean.obj-5b6bb1c3c6582f6f38a484b331e08786.mesh"]
+
+source_file="res://assets/3D/kostka_clean.obj"
+dest_files=["res://.godot/imported/kostka_clean.obj-5b6bb1c3c6582f6f38a484b331e08786.mesh", "res://.godot/imported/kostka_clean.obj-5b6bb1c3c6582f6f38a484b331e08786.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
