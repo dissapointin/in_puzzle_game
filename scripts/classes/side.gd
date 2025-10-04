@@ -23,8 +23,8 @@ func get_current_middle() -> Vector3:
 	return total / count if count > 0 else Vector3.ZERO
 
 # returns the unit vector based of the SIDE enum
-func get_vector_from_side(side: SIDE) -> Vector3:
-	match side:
+func get_vector_from_side(s: SIDE) -> Vector3:
+	match s:
 		SIDE.TOP: return Vector3.UP
 		SIDE.BOTTOM: return Vector3.DOWN
 		SIDE.LEFT: return Vector3.LEFT

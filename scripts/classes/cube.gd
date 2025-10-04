@@ -15,7 +15,6 @@ func rotate_cube(side: Side.SIDE) -> void:
 		return
 		
 	var side_node: Side = sides[side]
-	
 	if not side_node:
 		printerr("side doesnt exist, define the side using Cube.set_side(Node3D, Side.SIDE)")
 		return
