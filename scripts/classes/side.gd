@@ -5,8 +5,10 @@ extends Node3D
 # side directions
 enum SIDE { TOP, BOTTOM, LEFT, RIGHT, FRONT, BACK }
 
+
 var side: SIDE
 var middle: Vector3 = Vector3.ZERO
+var cube_parent: Cube
 
 func _ready() -> void:
 	middle = get_current_middle() # sets th current middle
@@ -63,5 +65,6 @@ func rotate_side(rot_deg: float, duration: float) -> void:
 
 	pivot.queue_free()
 	
-func _init(s: SIDE) -> void:
+func set_enum(s: SIDE, c: Cube) -> void:
 	side = s
+	cube_parent = c
