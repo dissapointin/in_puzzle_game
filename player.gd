@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @export var speed : float
 @export var camera_sens : Vector2 = Vector2(0.5, 0.3)
+@onready var camera : Camera3D = $Camera3D
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -32,7 +33,7 @@ func _input(event: InputEvent):
 	
 func _rotate_camera(x, y):
 		rotation.y -= x * camera_sens.y
-		rotation.x -= y * camera_sens.x
+		camera.rotation.x -= y * camera_sens.x
 		
 
 	

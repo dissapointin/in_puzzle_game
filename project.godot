@@ -8,10 +8,12 @@
 
 config_version=5
 
+@@-1,39+0,0@@config_version=5
+
 [application]
 
 config/name="In Puzzle"
-run/main_scene="uid://dygtwec7t44qg"
+run/main_scene="uid://veow5v5pqju4"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

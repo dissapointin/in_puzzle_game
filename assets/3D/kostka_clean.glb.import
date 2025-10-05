@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bsvqdme3lb3x2"
-path="res://.godot/imported/kostka_clean.glb-3025b73f812056e4fc4fd6a52b4ff9e8.scn"
+path="res://.godot/imported/kostka_clean.glb-6e9bc20f69a3419e7d18378bbfaaaed2.scn"
 
 [deps]
 
-source_file="res://kostka_clean.glb"
-dest_files=["res://.godot/imported/kostka_clean.glb-3025b73f812056e4fc4fd6a52b4ff9e8.scn"]
+source_file="res://assets/3D/kostka_clean.glb"
+dest_files=["res://.godot/imported/kostka_clean.glb-6e9bc20f69a3419e7d18378bbfaaaed2.scn"]
 
 [params]
 
