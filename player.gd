@@ -35,9 +35,12 @@ func _process(delta: float) -> void:
 
 	
 func _input(event: InputEvent):
+	
 	if event is InputEventMouseMotion:
-		_rotate_camera(event.relative.x, event.relative.y)
-		mouse_direction = sign(event.relative.x)
+		if Input.is_action_pressed("move_cube"):
+			mouse_direction = sign(event.relative.x)
+		else:
+			_rotate_camera(event.relative.x, event.relative.y)
 		
 
 	
