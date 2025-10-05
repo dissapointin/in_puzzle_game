@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://qvlas8kc7psf"
-path="res://.godot/imported/palm.blend-c24bbc12f38fb6760025652558545931.scn"
+uid="uid://dy8goxx671h6g"
+path="res://.godot/imported/balloon.blend-5019d79e2c380ef16f738f6e6c134e87.scn"
 
 [deps]
 
-source_file="res://3D models/character/palm.blend"
-dest_files=["res://.godot/imported/palm.blend-c24bbc12f38fb6760025652558545931.scn"]
+source_file="res://3D models/interior_objects/balloon.blend"
+dest_files=["res://.godot/imported/balloon.blend-5019d79e2c380ef16f738f6e6c134e87.scn"]
 
 [params]
 
