@@ -62,8 +62,9 @@ func get_current_middle(subcubes_given_side: Array[Subcube]) -> Vector3:
 	var total := Vector3.ZERO
 	var count := 0
 	for subcube: Node3D in subcubes_given_side:
-		total += subcube.global_position
+		total += subcube.position
 		count += 1
+	print("pivot" + str(total/count))
 	return total / count if count > 0 else Vector3.ZERO
 	
 func rotate_cube(side: SIDE) -> void:
@@ -71,7 +72,7 @@ func rotate_cube(side: SIDE) -> void:
 		return
 	is_rotating = true
 	print(str(side))
-	_rotate_subcubes(side, 90.0, 0.5)
+	await _rotate_subcubes(side, 90.0, 0.5)
 	is_rotating = false
 	
 func _rotate_subcubes(side: SIDE, rot_deg: float, duration: float) -> void:
