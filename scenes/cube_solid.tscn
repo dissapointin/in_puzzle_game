@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://fg2jfpvmicf0"]
+
+[ext_resource type="PackedScene" uid="uid://dutx0ex6by78x" path="res://scenes/subcube.tscn" id="1_4u1ag"]
+
+[node name="CubeSolid" type="Node3D"]
+
+[node name="Cube" type="Node3D" parent="."]
+
+[node name="staticBodySubcube" parent="." instance=ExtResource("1_4u1ag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, 1)
+
+[node name="staticBodySubcube2" parent="." instance=ExtResource("1_4u1ag")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1, -1, 1)
+
+[node name="staticBodySubcube3" parent="." instance=ExtResource("1_4u1ag")]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 1, 1, 1)
+
+[node name="staticBodySubcube4" parent="." instance=ExtResource("1_4u1ag")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1, 1, 1)
+
+[node name="staticBodySubcube5" parent="." instance=ExtResource("1_4u1ag")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -1, -1, -1)
+
+[node name="staticBodySubcube6" parent="." instance=ExtResource("1_4u1ag")]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 3.821371e-15, 4.371139e-08, -1, 1, -4.371139e-08, 1.9106855e-15, 1, -1, -1)
+disable_mode = 2
+
+[node name="staticBodySubcube7" parent="." instance=ExtResource("1_4u1ag")]
+transform = Transform3D(4.371139e-08, -1, -8.742278e-08, -1, -4.371139e-08, 0, -3.821371e-15, 8.742278e-08, -1, 1, 1, -1)
+
+[node name="staticBodySubcube8" parent="." instance=ExtResource("1_4u1ag")]
+transform = Transform3D(1.1924881e-08, 1, 0, 4.371139e-08, -5.2125306e-16, 1, 1, -1.1924881e-08, -4.371139e-08, -1, 1, -1)
