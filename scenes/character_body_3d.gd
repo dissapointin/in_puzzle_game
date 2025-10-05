@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export var speed : float
-@export var camera_sens : Vector2 = Vector2(0.05, 0.03)
+@export var camera_sens : Vector2 = Vector2(0.5, 0.3)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://veow5v5pqju4"]
+[gd_scene load_steps=5 format=3 uid="uid://veow5v5pqju4"]
 
 [ext_resource type="Script" uid="uid://dy8pg21w3410p" path="res://scripts/test_script.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://sx6rqwpcr2kr" path="res://scenes/cube.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://b0l648lmwhxfj" path="res://player.tscn" id="3_lnu2h"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mwb40"]
 
@@ -11,10 +12,10 @@ script = ExtResource("1_lnu2h")
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_mwb40")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 5, 4, 6)
-
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 2, 6)
 
 [node name="Cube" parent="." instance=ExtResource("2_yqjtg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="player" parent="." instance=ExtResource("3_lnu2h")]

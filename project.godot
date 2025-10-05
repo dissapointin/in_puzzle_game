@@ -17,6 +17,10 @@ run/main_scene="uid://veow5v5pqju4"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[dotnet]
+
+project/assembly_name="In Puzzle"
+
 [input]
 
 forward={
