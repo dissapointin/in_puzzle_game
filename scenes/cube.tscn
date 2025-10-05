@@ -397,7 +397,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_fc0e3")
 shape = SubResource("ConcavePolygonShape3D_8bmvu")
 
 [node name="Subcube2" type="MeshInstance3D" parent="Subcube5"]
-transform = Transform3D(-4.371139e-08, 0.099999964, -4.371139e-08, 0, -4.3711372e-09, -1, -1, -4.3711372e-09, 1.9106855e-15, -0.5, -0.014344096, 0)
+transform = Transform3D(-4.371139e-08, 0.099999964, -4.371139e-08, 0, -4.3711372e-09, -1, -1, -4.3711372e-09, 1.9106855e-15, -0.5, 0, 0)
 mesh = SubResource("BoxMesh_e2o6t")
 skeleton = NodePath("../../../RigidBody3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_ryrav")

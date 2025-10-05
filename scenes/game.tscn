@@ -9,6 +9,9 @@
 [node name="Game" type="Node3D"]
 script = ExtResource("1_lnu2h")
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.797842, 3.7273605, 12.929355)
+
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_mwb40")
 

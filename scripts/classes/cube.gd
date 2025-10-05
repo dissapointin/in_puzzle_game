@@ -2,7 +2,7 @@ class_name Cube
 
 extends Node3D
 
-const SMALL_ZERO: float = 0.000000001    
+const SMALL_ZERO: float = 0.00001    
 
 # side directions
 enum SIDE { TOP, BOTTOM, LEFT, RIGHT, FRONT, BACK }
@@ -56,6 +56,80 @@ func get_current_middle(subcubes_given_side: Array[Subcube]) -> Vector3:
 		count += 1
 	return total / count if count > 0 else Vector3.ZERO
 	
+func rotate_cube_based_of_subcube(subcube: Subcube, side: SIDE) -> void:
+	if is_rotating:
+		return
+	is_rotating = true
+	rotate_subcubes_based_of_subcube(subcube, side, 90.0, 0.5)
+	is_rotating = false
+	
+# rotates the given section where subcube is located based of side direction
+func rotate_subcubes_based_of_subcube(sel_subcube: Subcube, side: SIDE, rot_deg: float, duration: float) -> void:
+	var direction: Vector3 = get_vector_from_side(side)
+	var subcubes_to_rotate: Array[Subcube] = []
+	for subcube: Node3D in get_children():
+		if abs(direction.x) > SMALL_ZERO and abs(subcube.position.x - sel_subcube.position.x) <= SMALL_ZERO:
+			subcubes_to_rotate.append(subcube)
+		elif abs(direction.y) > SMALL_ZERO and abs(subcube.position.y - sel_subcube.position.y) <= SMALL_ZERO:
+			subcubes_to_rotate.append(subcube)
+		elif abs(direction.z) > SMALL_ZERO and abs(subcube.position.z - sel_subcube.position.z) <= SMALL_ZERO:
+			subcubes_to_rotate.append(subcube)
+
+	var middle: Vector3 = get_current_middle(subcubes_to_rotate)
+	var axis: Vector3 = get_vector_from_side(side)
+	var pivot: Node3D = Node3D.new() # temp pivot to rotate around
+	add_child(pivot)
+	pivot.position = middle
+	
+	# adds all subcubes to the pivot
+	for subcube: Subcube in subcubes_to_rotate:
+		subcube.reparent(pivot)
+		
+	# rotates the pivot (and all of the subsides)
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(
+		pivot, 
+		"rotation_degrees", 
+		pivot.rotation_degrees + axis * rot_deg, 
+		duration
+	)
+	
+	await tween.finished # wait for the rotation to end
+
+	# returns the sturcture to the origianl state
+	for subcube: Subcube in subcubes_to_rotate:
+		subcube.reparent(self)
+
+	pivot.queue_free()
+	
+	#reside UNUSED
+	for c: Subcube in subcubes_to_rotate:
+		for d: SIDE in SIDE.values():
+			subcubes_dict_modify(c, d, false)
+	
+	#UNUSED
+	for c: Subcube in subcubes_to_rotate:
+		set_subcube(c,find_sides(c))
+			
+func find_sides(subcube: Subcube) -> Array[SIDE]:
+	var result: Array[SIDE] = []
+	
+	if subcube.position.x > SMALL_ZERO:
+		result.append(SIDE.RIGHT)
+	elif subcube.position.x < -SMALL_ZERO:
+		result.append(SIDE.LEFT)
+	if subcube.position.y > SMALL_ZERO:
+		result.append(SIDE.TOP)
+	elif subcube.position.y < -SMALL_ZERO:
+		result.append(SIDE.BOTTOM)
+	if subcube.position.z > SMALL_ZERO:
+		result.append(SIDE.BACK)
+	elif subcube.position.z < -SMALL_ZERO:
+		result.append(SIDE.FRONT)
+	
+	return result
+
+# DEPRECATED, currently unused (rotating using sides)
 func rotate_cube(side: SIDE) -> void:
 	if is_rotating:
 		return
@@ -63,6 +137,7 @@ func rotate_cube(side: SIDE) -> void:
 	rotate_subcubes(side, 90.0, 0.5)
 	is_rotating = false
 	
+# DEPRECATED, currently unused (rotating using sides)
 func rotate_subcubes(side: SIDE, rot_deg: float, duration: float) -> void:
 	var subcubes_given_side: Array[Subcube] = []
 	for key: Node3D in subcubs[side]:
@@ -102,21 +177,3 @@ func rotate_subcubes(side: SIDE, rot_deg: float, duration: float) -> void:
 	
 	for c: Subcube in subcubes_given_side:
 		set_subcube(c,find_sides(c))
-
-func find_sides(subcube: Subcube) -> Array[SIDE]:
-	var result: Array[SIDE] = []
-	
-	if subcube.position.x > SMALL_ZERO:
-		result.append(SIDE.RIGHT)
-	elif subcube.position.x < -SMALL_ZERO:
-		result.append(SIDE.LEFT)
-	if subcube.position.y > SMALL_ZERO:
-		result.append(SIDE.TOP)
-	elif subcube.position.y < -SMALL_ZERO:
-		result.append(SIDE.BOTTOM)
-	if subcube.position.z > SMALL_ZERO:
-		result.append(SIDE.BACK)
-	elif subcube.position.z < -SMALL_ZERO:
-		result.append(SIDE.FRONT)
-	
-	return result
