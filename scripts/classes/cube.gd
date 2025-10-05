@@ -18,6 +18,16 @@ static func get_vector_from_side(s: SIDE) -> Vector3:
 		SIDE.BACK: return Vector3.BACK
 		_: return Vector3.ZERO
 
+static func get_side_from_vector(v : Vector3) -> SIDE:
+	match v:
+		Vector3.UP : return SIDE.TOP
+		Vector3.DOWN : return SIDE.BOTTOM
+		Vector3.LEFT : return SIDE.LEFT
+		Vector3.RIGHT : return SIDE.RIGHT
+		Vector3.BACK * -1 :  return SIDE.FRONT 
+		Vector3.BACK: return SIDE.BACK
+		_: 	print("error invalid vector");	return SIDE.TOP
+
 # using Dict, instead of list for faster adding/popping - hashtable
 var subcubs: Dictionary = {
 	SIDE.TOP: {},
@@ -60,10 +70,11 @@ func rotate_cube(side: SIDE) -> void:
 	if is_rotating:
 		return
 	is_rotating = true
-	rotate_subcubes(side, 90.0, 0.5)
+	print(str(side))
+	_rotate_subcubes(side, 90.0, 0.5)
 	is_rotating = false
 	
-func rotate_subcubes(side: SIDE, rot_deg: float, duration: float) -> void:
+func _rotate_subcubes(side: SIDE, rot_deg: float, duration: float) -> void:
 	var subcubes_given_side: Array[Subcube] = []
 	for key: Node3D in subcubs[side]:
 		subcubes_given_side.append(key)

@@ -9,4 +9,4 @@ func _ready() -> void:
 	for d: Cube.SIDE in Cube.SIDE.values():
 		await wait(2)
 		print(d)
-		cube.rotate_cube(d)
+		cube.rotate_cube(d, Cube.SIDE.TOP)

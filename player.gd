@@ -1,10 +1,8 @@
 extends CharacterBody3D
 
 @export var speed : float
-<<<<<<< HEAD
-@export var camera_sens : Vector2 = Vector2(0.05, 0.03)
-=======
-@export var camera_sens : Vector2 = Vector2(0.5, 0.3)
+
+@export var camera_sens : Vector2 = Vector2(000.5, 000.3)
 @onready var camera : Camera3D = $Camera3D
 var mouse_direction : float = 0
 
@@ -50,9 +48,9 @@ func _rotate_camera(x, y):
 func _rotate_cube():
 	var ray: RayCast3D = camera.raycast
 	ray.target_position = Vector3.FORWARD * 20
-	print(ray.is_colliding())
+	#print(ray.is_colliding())
 	var normal: Vector3 = round(ray.get_collision_normal())
-	print(mouse_direction)
+	#print(mouse_direction)
 	emit_signal("move_cube_input", normal, mouse_direction)
 	pass
  
